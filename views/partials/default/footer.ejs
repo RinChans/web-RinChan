@@ -1,0 +1,67 @@
+<footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 left">
+                    <h1>SUBSCRIBE TO US</h1>
+                    <div class="form-gird">
+                        <form action="#" method="POST">
+                            <input type="email" placeholder="Your email..." />
+                            <button type="submit" class="btn btn-danger btn-lg">send</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6 right">
+                    <div class="logo-footer">
+                        <a href="#">RINRIN</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".rinchans").owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            autoplay:true,
+            autoplayTimeout:1000,
+            autoplayHoverPause:true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        });
+    });
+    $(document).ready(function() {
+      setTimeout(function() {
+        $('.auto-hide').slideUp(300);
+      },2000);
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script>
+    $('.carousel').carousel({
+        interval: 2000
+    });
+    $(".hover").mouseleave(
+        function () {
+            $(this).removeClass("hover");
+        }
+    );
+ 
+</script>
+
+</html>

@@ -1,0 +1,222 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.container-fluid {
+  padding: 0;
+  margin: 0;
+}
+@import url(https://fonts.googleapis.com/css?family=Raleway:500);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+nav.navbar.navbar-expand-md.navbar-light.bg-light.sticky-top.navbar-top {
+    border-bottom: 3px solid #000;
+    padding: 15px 0px;
+    background: #000000bf !important;
+}
+a.nav-link,a.navbar-brand {
+    color: #fff !important;
+}
+a.navbar-brand {
+    font-size: 30px;
+}
+li.nav-item {
+    padding-right: 20px;
+}
+a.nav-link {
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: 30%;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+img.d-block.w-100 {
+    height: 800px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.container-fluid.padding {
+    padding: 30px 0px;
+}
+p.lead {
+    width: 71%;
+    text-align: center;
+    margin: auto;
+}
+.container.border-owl.padding {
+    padding: 10px 25px;
+    border: 1px solid #000;
+    background: #000;
+}
+.owl-carousel .owl-stage-outer {
+    position: relative;
+    overflow: hidden;
+    -webkit-transform: translate3d(0,0,0);
+    text-align: center;
+}
+.owl-caption {
+    color: #fff;
+}
+
+/*-----TITLE PHIM-------*/
+.snip1338 {
+  font-family: 'Raleway', Arial, sans-serif;
+  position: relative;
+  float: left;
+  color: #bdbdbd;
+  margin: 30px 0px;
+  max-width: 285px;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.snip1338 h1,
+.snip1338 h5 {
+  margin: 0;
+  text-transform: uppercase;
+}
+.snip1338 h1 {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.7em;
+  line-height: 50px;
+  position: relative;
+  padding-left: 50px;
+  border: 5px solid #000;
+  color: red;
+}
+.snip1338 h5,
+.snip1338 h6 {
+  margin: 7px 0 7px 56px;
+}
+.snip1338 h5 {
+  font-weight: 500;
+  font-size: 0.6em;
+  color: #000;
+}
+.snip1338 h6 {
+  display: inline-block;
+  position: relative;
+}
+.snip1338 i {
+  position: absolute;
+  line-height: 50px;
+  width: 50px;
+  left: 0;
+  border-right: 5px solid #000;
+  font-size: 1.1em;
+} 
+.clear {
+  clear: both;
+}
+.gird-news .left1 {
+  float: left;
+}
+.gird-news .left1 img {
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.gird-news .right1 {
+  float: right;
+
+}
+.gird-news .right1 .news-caption {
+  
+}
+/*-----Right----*/
+.gird-news .left2 {
+  float: left;
+}
+.gird-news .right2 {
+  float: right;
+}
+.gird-news .right2 img {
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+footer {
+  padding : 40px 0px;
+  background: #000;
+  color: #fff;
+}
+button.btn.btn-danger.btn-lg {
+    text-align: center;
+    border-radius: 0;
+    text-transform: uppercase;
+    margin-top: -4px;
+    margin-left: -5px;
+}
+
+input[type="email"] {
+    text-align: center;
+    padding: 10px 5px;
+    border: 2px solid red;
+}
+.logo-footer {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 35px;
+}
+.logo-footer a {
+  color: #fff;
+}
+.col-md-12.center {
+    padding: 30px 0;
+    margin: auto;
+    width: 285px;
+}
+.gird-news .title {
+    color: #dacb46;
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+.description {
+    color: #000000c2;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+a.nav-link.login {
+    background-color: #fff;
+    color: #000 !important;
+    border: 1px solid #dacb46;
+    transition: all 0.3s ease;
+}
+a.nav-link.login:hover {
+  color: #fff!important;
+  background: #dacb46;
+}
+a.nav-link.signup {
+    background-color: #fff;
+    color: #000 !important;
+    border: 1px solid #dacb46;
+    transition: all 0.3s ease;
+}
+a.nav-link.signup:hover {
+  color: #fff!important;
+  background:red;
+}
+/*-----Single page------*/
+.info-image img {
+    height: 315px;
+}
+.info-film p.chatluong {
+    font-size: 17px;
+}
+
+.info-film p.min {
+    font-size: 17px;
+}
+.trailer-top {
+  padding: 20px 0;
+}
