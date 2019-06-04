@@ -32,7 +32,6 @@ module.exports = {
     
                     return done(null, user, req.flash('success-message','Login Successful'));
                 })
-                res.redirect('/');
             })
         }));
         passport.serializeUser(function(user, done) {

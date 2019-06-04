@@ -1,8 +1,11 @@
 
 const Post = require('../models/PostModel').Post;
+const Admin = require('../models/AdminModel').Admin;
 const Category = require('../models/CategoryModel').Category;
 const {isEmpty} = require('../config/customFunction');
-
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcryptjs');
 
 module.exports = {
     index : (req,res) => {
@@ -45,7 +48,7 @@ module.exports = {
         newPost.save()
             .then(post => {
                 req.flash('success-message','Post created successfully');
-                res.redirect('/admin/posts');
+                res.redirect('/admin/posts'); 
             }).catch(err => {
                 console.log(err);
             })
@@ -143,6 +146,91 @@ module.exports = {
                     res.status(200).json({url : '/admin/category'});
                 })
             })
+        }
+    },
+
+    /*---------------ADMIN LOGIN AND REGISTER------------------*/
+    getLogin : (req,res) => {
+        res.render('admin/login');
+    },
+    loginPost : (req,res) => {
+        passport.use( new LocalStrategy({
+            usernameField : 'email',
+            passReqToCallback : true
+        },(req,email,password,done) => {
+            Admin.findOne({email : email}).then( admin => {
+                if( !admin ){
+                    return done(null,false,req.flash('error-message','Admin not found with this Email'));
+                }
+                bcrypt.compare(password, admin.password, (err, passwordMatched) => {
+                    if(err)
+                        return err;
+                    
+                    if(!passwordMatched) {
+                        return done(null,false,req.flash('error-message','Invalid username or Password'));
+                    }
+                    
+                    return done(null,admin, req.flash('success-message','Login SuccessFuly'));
+                })
+            })
+        }));
+        passport.serializeUser(function(user, done) {
+            done(null, user.id);
+          });
+          
+          passport.deserializeUser(function(id, done) {
+            User.findById(id, function(err, user) {
+              done(err, user);
+            });
+          });
+    },
+    getRegister : (req,res) => {
+        res.render('admin/register');
+    },
+    registerPost : (req,res) => {
+        let errors = [];
+
+        if(!req.body.fullname){
+            errors.push({message : 'Fullname is mandaroty'});
+        }
+        if(!req.body.email){
+            errors.push({message : 'Email is mandaroty'});
+        }
+        if(!req.body.phone){
+            errors.push({message : 'Phone is mandaroty'});
+        }
+        if(!req.body.password ){
+            errors.push({message : 'password do not match'});
+        }
+
+        if(errors.length < 0) {
+            res.render('default/register', {
+                errors: errors,
+                fullname : req.body.fullname,
+                email : req.body.email
+            });
+        }
+
+        else {
+            Admin.findOne({email : req.body.email}).then(admin => {
+                if (admin) {
+                    req.flash('error-message', `Email already exists, Try to login`);
+                    res.redirect('/admin/login');
+                }
+                else {
+                    const newAdmin = new Admin(req.body);
+
+                    bcrypt.genSalt(10, (err,salt) => {
+                        bcrypt.hash(newAdmin.password, salt ,(err,hash) => {
+                            newAdmin.password = hash;
+                            newAdmin.save().then(admin => {
+                            req.flash('success-message', `You are now Registered`);
+                            res.redirect('/admin/login');
+                            });
+                        });
+                    });
+                }
+            });
         }
     }
 }

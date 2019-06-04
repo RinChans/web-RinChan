@@ -9,5 +9,24 @@ module.exports = {
             }
         }
         return true;
+    },
+    isAuthenticated : (req,res,next) => {
+
+        if(req.isAuthenticated()) {
+            next();
+
+        }
+        else {
+            res.redirect('/login');
+        }
+        
+    },
+    isAuthenticatedAdmin : (req,res,next) => {
+        if(req.isAuthenticatedAdmin ()){
+            next();
+        }
+        else {
+            res.redirect('/admin/login');
+        }
     }
 }
