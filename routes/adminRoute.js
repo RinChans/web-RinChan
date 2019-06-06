@@ -50,20 +50,20 @@ router.route('/')
     });
 
 /*--------All Post-----*/
-router.route('/posts')
+router.route('/film')
     .get(adminController.getPosts);
     
 
-router.route('/posts/create')
+router.route('/film/create')
     .get(adminController.createPosts)
     .post(adminController.submitPosts);
     
-router.route('/posts/edit/:id')
+router.route('/film/edit/:id')
     .get(adminController.editPosts)
     .put(adminController.editPostSubmit);
 
 
-router.route('/posts/delete/:id')
+router.route('/film/delete/:id')
     .delete(adminController.deletePosts);
 
 /*----------Category Routes------------*/
@@ -94,5 +94,29 @@ router.route('/register')
     .get(adminController.getRegister)
     .post(adminController.registerPost);
 
+/*--------------CINEPLEX :  CUM RAP-----------------*/
+router.route('/cineplex')
+    .get(adminController.getCineplex);
+
+
+router.route('/cineplex/create')
+    .get(adminController.createCineplex)
+    .post(adminController.SubmitCineplex);
+
+router.route('/cineplex/delete/:id')
+    .delete(adminController.deleteCineplex);
+
+
+/*--------------CINEMA : RAP PHIM -----------------*/    
+
+router.route('/cinema')
+    .get(adminController.getCinema);
+
+router.route('/cinema/create')
+    .get(adminController.createCinema)
+    .post(adminController.summitCinema);
+
+router.route('/cinema/delete/:id')
+    .delete(adminController.deleteCinema);
 
 module.exports = router;

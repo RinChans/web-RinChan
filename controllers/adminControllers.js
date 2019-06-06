@@ -2,6 +2,8 @@
 const Post = require('../models/PostModel').Post;
 const Admin = require('../models/AdminModel').Admin;
 const Category = require('../models/CategoryModel').Category;
+const Cineplex = require('../models/CineplexModel').Cineplex;
+const Cinema = require('../models/CinemaModel').Cinema;
 const {isEmpty} = require('../config/customFunction');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -15,7 +17,7 @@ module.exports = {
         Post.find()
         .populate('category')
             .then(posts => {
-                res.render('admin/posts/index',{posts : posts});
+                res.render('admin/film/index',{posts : posts});
             }).catch(err => {
                 console.log(err);
             });
@@ -48,7 +50,7 @@ module.exports = {
         newPost.save()
             .then(post => {
                 req.flash('success-message','Post created successfully');
-                res.redirect('/admin/posts'); 
+                res.redirect('/admin/film'); 
             }).catch(err => {
                 console.log(err);
             })
@@ -56,7 +58,7 @@ module.exports = {
     createPosts : (req,res) => {
         Category.find()
             .then(cats => {
-                res.render('admin/posts/create', {Category : cats});
+                res.render('admin/film/create', {Category : cats});
             })
     },
     editPosts : (req,res) => {
@@ -66,7 +68,7 @@ module.exports = {
             .then(posts => {
                Category.find()
                     .then(cats => {
-                        res.render('admin/posts/edit',{posts : posts , Category : cats});
+                        res.render('admin/film/edit',{posts : posts , Category : cats});
                     });
             }).catch(err => {
                 console.log(err);
@@ -87,7 +89,7 @@ module.exports = {
                 post.save()
                     .then(updatePost => {
                         req.flash('success-message',`The Post ${updatePost.title} has been updated `);
-                        res.redirect('/admin/posts');
+                        res.redirect('/admin/film');
                     })
             })
     },
@@ -96,7 +98,7 @@ module.exports = {
         Post.findByIdAndDelete(id)
             .then(deletePost => {
                 req.flash('success-message',`The post ${deletePost.title} has been deleted`);
-                res.redirect('/admin/posts');
+                res.redirect('/admin/film');
             })
     },
     getCategory : (req,res) => {
@@ -232,5 +234,79 @@ module.exports = {
                 }
             });
         }
+    },
+    getCineplex :async (req,res) => {
+        await Cineplex.find()
+            .then(cineplex => {
+                res.render('admin/cineplex/index', {Cineplex : cineplex});
+            }).catch(err => {
+                console.log(err);
+            });
+    },
+    createCineplex : (req,res) => {
+        res.render('admin/cineplex/create');
+    },
+    SubmitCineplex : (req,res) => {
+        const newCineplex = new Cineplex({
+            title : req.body.title,
+            address : req.body.address
+        })
+        newCineplex.save()
+            .then(cineplex => {
+                req.flash('success-message','Cineplex created successfuly');
+                res.redirect('/admin/cineplex');
+            }).catch(err => {
+                console.log(err);
+            })
+    },
+    deleteCineplex : (req,res) => {
+        const id = req.params.id ;
+        Cineplex.findByIdAndDelete(id)
+            .then(deleteCine => {
+                req.flash('success-message',`Delete ${deleteCine.title} successfuly`);
+                res.redirect('/admin/cineplex');
+            })
+    },
+    getCinema : (req,res) => {
+        Cinema.find()
+            .populate('cineplex')
+            .then(cinema => {
+                res.render('admin/cinema', {Cinema : cinema});
+            }).catch(err => {
+                console.log(err);
+            })
+    },
+    createCinema : (req,res) => {
+        Cineplex.find()
+            .populate('cineplexe')
+            .then(cineplex => {
+                res.render('admin/cinema/create', {Cineplex : cineplex});
+            }).catch(err => {
+                console.log(err);
+            })
+    },
+    summitCinema : (req,res) => {
+        const newCinema = new Cinema({
+            title : req.body.title,
+            cineplex : req.body.cineplex,
+            typeCinema : req.body.typeCinema,
+            horizoncal : req.body.horizoncal,
+            vertical : req.body.vertical
+        });
+        newCinema.save()
+            .then(cimemaSub => {
+                req.flash('success-message','Created Cinema successfuly');
+                res.redirect('/admin/cinema');
+            })
+    },
+    deleteCinema : (req,res) => {
+        const id = req.params.id;
+        Cinema.findByIdAndDelete(id)
+            .then(deleteCinema => {
+                req.flash('success-message',`Delete cinema ${deleteCinema.title} successfuly`);
+                res.redirect('/admin/cinema');
+            }).catch(err => {
+                console.log(err);
+            })
     }
 }
