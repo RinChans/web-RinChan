@@ -94,11 +94,11 @@
          <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">All Film</h1>
+          <h1 class="h3 mb-2 text-gray-800">All ShowTime</h1>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Flow Film</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Flow ShowTime</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -106,29 +106,31 @@
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>Title</th>
-                      <th>Preimiere Date</th>
-                      <th>Poster</th>
-                      <th>Time</th>
+                      <th>Film</th>
+                      <th>Cinema</th>
+                      <th>Time Begin</th>
+                      <th>Time End</th>
+                      <th>Price</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                  <% Films.forEach( (film) => {%>
+                  <% Showtime.forEach( (showtime) => {%>
                     <tr>
-                      <td><%- film._id %></td>
-                      <td><%- film.title %></td>
-                      <td><%- film.primiereDate %></td>
-                      <td><img src="<%- film.file %>" style="width : 80px ; height: 80px;" /></td>
-                      <td><%- film.time %></td>
+                      <td><%- showtime._id %></td>
+                      <td><%- showtime.film.title %></td>
+                      <td><%- showtime.cinema.title %></td>
+                      <td><%- showtime.begin %></td>
+                      <td><%- showtime.end %></td>
+                      <td><%- showtime.price %> Vnd</td>
                       <td>
-                        <a class="btn btn-primary btn-md" href='/admin/film/create'>Create</a>
-                        <form action="/admin/film/delete/<%- film._id%>?newMethod=DELETE" method="post">
-                            <button class="btn btn-warning btn-bg">Delete</button>
+                        <a href="/admin/showtime/create" class="btn btn-success btn-md">Create</a>
+                        <form action="/admin/showtime/delete/<%- showtime._id%>?newMethod=DELETE">
+                          <button type="submit" class="btn btn-warning btn-md">Delete</button>
                         </form>
                       </td>
                     </tr>
-                  <%})%>
+                  <% }) %>
                   </tbody>
                 </table>
               </div>

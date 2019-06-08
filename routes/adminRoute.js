@@ -49,22 +49,22 @@ router.route('/')
         });
     });
 
-/*--------All Post-----*/
+/*--------All Film-----*/
 router.route('/film')
-    .get(adminController.getPosts);
+    .get(adminController.getFilms);
     
 
 router.route('/film/create')
-    .get(adminController.createPosts)
-    .post(adminController.submitPosts);
+    .get(adminController.createFilms)
+    .post(adminController.submitFilms);
     
 router.route('/film/edit/:id')
-    .get(adminController.editPosts)
-    .put(adminController.editPostSubmit);
+    .get(adminController.editFilms)
+    .put(adminController.editFilmSubmit);
 
 
 router.route('/film/delete/:id')
-    .delete(adminController.deletePosts);
+    .delete(adminController.deleteFilms);
 
 /*----------Category Routes------------*/
 router.route('/category')
@@ -77,7 +77,7 @@ router.route('/category/:id')
 
 router.route('/category/edit/:id')
     .get(adminController.editCategoryRoute)
-    .post(adminController.editCategoryPostRoute);
+    .post(adminController.editCategoryFilmRoute);
 
 /*----------ADMIN LOGIN AND RESGISTER------------*/
 router.route('/login')
@@ -88,11 +88,11 @@ router.route('/login')
         failureFlash : true,
         successFlash: true,
         session : true  
-    }),adminController.loginPost);
+    }),adminController.loginFilm);
 
 router.route('/register')
     .get(adminController.getRegister)
-    .post(adminController.registerPost);
+    .post(adminController.registerFilm);
 
 /*--------------CINEPLEX :  CUM RAP-----------------*/
 router.route('/cineplex')
@@ -118,5 +118,17 @@ router.route('/cinema/create')
 
 router.route('/cinema/delete/:id')
     .delete(adminController.deleteCinema);
+
+
+//-------------SHOWTIME : SUAT CHIEU--------------//
+
+router.route('/showtime')
+    .get(adminController.getShowtime);
+
+router.route('/showtime/create')
+    .get(adminController.createShowtime)
+    .post(adminController.submitShowtime);
+
+
 
 module.exports = router;

@@ -103,40 +103,32 @@
               <h6 class="m-0 font-weight-bold text-primary">Create Posts</h6>
             </div>
             <div class="card-body">
-              <form method="post" action="/admin/posts/create" enctype="multipart/form-data">
+              <form method="post" action="/admin/film/create" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="title">Title</label>
                   <input type="text" class="form-control" name="title" id="title" aria-describedby="titleHelp" placeholder="Enter Title">
                   <small id="titleHelp" class="form-text text-muted">We'll never share your title with anyone else.</small>
                 </div>
                 <div class="form-group">
-                  <label for="category">Category</label>
-                  <select name="category" id="category" class="form-control">
-                    <% Category.forEach( (category) => {%>
-                      <option class="form-control" value="<%- category._id %>"><%- category.title%></option>
-                    <% }) %>
+                  <select name="cinema">
+                    <% Cinema.forEach( (cinema) => {%>
+                      <option value="<%- cinema._id%>"><%- cinema.title%></option>
+                    <%})%>
                   </select>
+                </div>
+                <div class="form-group">
+                  <label for="primiereDate">Date</label>
+                    <input class="form-control" type="date" placeholder="2011-08-19" id="primiereDate" name="primiereDate" />
                 </div>
                 <div class="form-group">
                   <label for="file">File Upload</label>
                   <input type="file" class="form-control" id="file" name="uploadFile" />
                 </div>
                 <div class="form-group">
-                  <label for="status">Status</label>
-                  <select name="status" id="status" class="form-control">
-                    <option class="form-control" value="public">Public</option>
-                    <option class="form-control" value="private">Private</option>
-                  </select>
+                  <label for="time">Time</label>
+                  <input type="number" class="form-control" name="time" id="time" aria-describedby="titleHelp" placeholder="Enter Title">
                 </div>
-                <div class="form-group">
-                  <label for="description">Description</label>
-                  <textarea class="form-control" rows="10" cols="" name="description"></textarea>
-                </div>
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="allowComment" name="allowComment">
-                  <label class="form-check-label" for="exampleCheck1">Allow Comment</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Create Post</button>
+                <button type="submit" class="btn btn-primary">Create Film</button>
               </form>      
             </div>
           </div>

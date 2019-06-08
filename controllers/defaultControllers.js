@@ -1,4 +1,4 @@
-const Post = require('../models/PostModel.js').Post;
+const Post = require('../models/FilmModel.js').Post;
 const User  = require('../models/UserModel.js').User;
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
