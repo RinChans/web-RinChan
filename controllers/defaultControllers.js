@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 const Film = require('../models/FilmModel.js').Film;
 const Showtime = require('../models/ShowtimeModel').Showtime;
+=======
+const Post = require('../models/FilmModel.js').Post;
+>>>>>>> 3a2c671d82bdb3913390e8fec31e67262407053f
 const User  = require('../models/UserModel.js').User;
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;

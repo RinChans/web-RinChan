@@ -44,7 +44,10 @@ module.exports = {
             primiereDate : req.body.primiereDate,
             file :`/uploads/${fileName}`,
             time : req.body.time,
+<<<<<<< HEAD
             trailer : req.body.trailer,
+=======
+>>>>>>> 3a2c671d82bdb3913390e8fec31e67262407053f
             creationDate : Date.now()
         });
         newFilm.save()
@@ -158,6 +161,7 @@ module.exports = {
     getLogin : (req,res) => {
         res.render('admin/login');
     },
+<<<<<<< HEAD
     // loginFilm : (req,res) => {
     //     passport.use( new LocalStrategy({
     //         usernameField : 'email',
@@ -170,6 +174,20 @@ module.exports = {
     //             bcrypt.compare(password, admin.password, (err, passwordMatched) => {
     //                 if(err)
     //                     return err;
+=======
+    loginFilm : (req,res) => {
+        passport.use( new LocalStrategy({
+            usernameField : 'email',
+            passReqToCallback : true
+        },(req,email,password,done) => {
+            Admin.findOne({email : email}).then( admin => {
+                if( !admin ){
+                    return done(null,false,req.flash('error-message','Admin not found with this Email'));
+                }
+                bcrypt.compare(password, admin.password, (err, passwordMatched) => {
+                    if(err)
+                        return err;
+>>>>>>> 3a2c671d82bdb3913390e8fec31e67262407053f
                     
     //                 if(!passwordMatched) {
     //                     return done(null,false,req.flash('error-message','Invalid username or Password'));
@@ -348,6 +366,7 @@ module.exports = {
             }).catch(err =>{
                 console.log(err);
             })
+<<<<<<< HEAD
     },
     deleteShowtime : (req,res) => {
         const id = req.params.id;
@@ -358,5 +377,7 @@ module.exports = {
             }).catch(err => {
                 console.log(err);
             })
+=======
+>>>>>>> 3a2c671d82bdb3913390e8fec31e67262407053f
     }
 }

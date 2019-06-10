@@ -18,10 +18,13 @@ const FilmSchema = new Schema({
         type : String,
         default : ''
     },
+<<<<<<< HEAD
     trailer : {
         type : String,
         required : true
     },
+=======
+>>>>>>> 3a2c671d82bdb3913390e8fec31e67262407053f
     user : {
         type : Schema.Types.ObjectId,
         ref : 'user'

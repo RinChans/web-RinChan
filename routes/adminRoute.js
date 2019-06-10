@@ -42,11 +42,19 @@ router.route('/')
     //     done(null, user.id);
     //   });
       
+<<<<<<< HEAD
     // passport.deserializeUser(function(id, done) {
     //     User.findById(id, function(err, user) {
     //       done(err, user);
     //     });
     // });
+=======
+    passport.deserializeUser(function(id, done) {
+        User.findById(id, function(err, user) {
+          done(err, user);
+        });
+    });
+>>>>>>> 3a2c671d82bdb3913390e8fec31e67262407053f
 
 /*--------All Film-----*/
 router.route('/film')
@@ -79,6 +87,7 @@ router.route('/category/edit/:id')
     .post(adminController.editCategoryFilmRoute);
 
 /*----------ADMIN LOGIN AND RESGISTER------------*/
+<<<<<<< HEAD
 // router.route('/login')
 //     .get(adminController.getLogin)
 //     .post(passport.authenticate('local',{
@@ -88,6 +97,17 @@ router.route('/category/edit/:id')
 //         successFlash: true,
 //         session : true  
 //     }),adminController.loginFilm);
+=======
+router.route('/login')
+    .get(adminController.getLogin)
+    .post(passport.authenticate('local',{
+        successRedirect : '/admin',
+        failureRedirect : '/admin/login',
+        failureFlash : true,
+        successFlash: true,
+        session : true  
+    }),adminController.loginFilm);
+>>>>>>> 3a2c671d82bdb3913390e8fec31e67262407053f
 
 router.route('/register')
     .get(adminController.getRegister)
@@ -127,6 +147,10 @@ router.route('/showtime')
 router.route('/showtime/create')
     .get(adminController.createShowtime)
     .post(adminController.submitShowtime);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3a2c671d82bdb3913390e8fec31e67262407053f
 
 router.route('/showtime/delete/:id')
     .delete(adminController.deleteShowtime);
