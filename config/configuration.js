@@ -1,11 +1,10 @@
+
 module.exports = {
-    mongoDB_URL : `mongodb+srv://rinchan:95WakGLGsJB8I4Ee@cluster0-4gdeu.mongodb.net/test?retryWrites=true&w=majority`,
+    mongoDB_URL : `mongodb+srv://rinchan:ApKfuulQyMZF382r@cluster0-4gdeu.mongodb.net/test?retryWrites=true&w=majority`,
     PORT : process.env.PORT || 3000,
     globalVariables : (req,res,next) => {
         res.locals.success_message = req.flash('success-message');
         res.locals.error_message = req.flash('error-message');
-        res.locals.user = req.user || null;
-        res.locals.admin = req.admin || null;
         next();
     }
 }

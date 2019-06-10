@@ -64,5 +64,17 @@ router.route('/register')
     .get(defaultControllers.registerGet)
     .post(defaultControllers.registerPost);
 
+/*------------Single Page Film--------------*/
+
+router.route('/single/:id')
+    .get(defaultControllers.getSingle);
     
+
+/*------------SHOW TIME : SUAT CHIEU--------------*/
+
+router.route('/showtime/:id')
+    .get(defaultControllers.Getshowtime);
+
+
+
 module.exports = router;

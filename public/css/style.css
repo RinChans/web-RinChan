@@ -220,3 +220,15 @@ a.nav-link.signup:hover {
 .trailer-top {
   padding: 20px 0;
 }
+.showtime .item {
+  border: 1px solid #0000006e;
+  width: 25%;
+  text-align: center;
+  text-decoration: none;
+  list-style: none;
+  cursor: pointer;
+}
+.showtime .item:hover {
+  border: 1px solid #000;
+  transition: all 0.3s ease;
+}

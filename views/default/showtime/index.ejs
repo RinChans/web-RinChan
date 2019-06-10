@@ -1,0 +1,53 @@
+<%- include('../../partials/default/header.ejs')%>
+
+<body>
+    <%- include('../../partials/default/navigation.ejs')%>
+    <div class="banner-header">
+        <div class="container-fluid">
+            <div class="img-banner">
+                <img src="image/banner.jpg" alt="" style="width: 100%; background-size:cover;">
+            </div>
+        </div>
+    </div>
+    <div class="container trailer-top">
+        <div class="col-md-12 chude">
+                        <div class="snip1338">
+                            <h5>RinRin</h5>
+                            <h1><i class="fas fa-star"></i>Show Time</h1>
+                            <h6>Est. 1958</h6>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+        <div class="row">
+           <div class="col-md-6">
+                <% Showtime.forEach( (showtime) => {%>
+                    <div class="showtime">
+                        <div class="site sitecgv">
+                            <div class="site">
+                                <h3><%- showtime.cinema.title %></h3>
+                            </div>
+                            <div class="cinema">
+                                <h4>Rap <%- showtime.cinema.typeCinema %></h4>
+                            </div>
+                            <ul class="product-grid">
+                                <li class="item">
+                                    <span><%- showtime.begin %></span>
+                                    <br>
+                                    <span>84 Ghe trong</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr style="border : 1.5px solid #000">
+                <% })%>
+           </div>
+           <div class="col-md-6">
+               <div class="chair">
+                    <h1>So ghe</h1>
+               </div>
+           </div>
+        </div>
+    </div>
+    <!--End TINTIC-->
+    <div class="clear"></div>
+    <%- include('../../partials/default/footer.ejs')%>

@@ -1,4 +1,5 @@
-const Post = require('../models/PostModel.js').Post;
+const Film = require('../models/FilmModel.js').Film;
+const Showtime = require('../models/ShowtimeModel').Showtime;
 const User  = require('../models/UserModel.js').User;
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -6,7 +7,12 @@ const bcrypt = require('bcryptjs');
 
 module.exports = {
     index: (req, res) => {
-        res.render('default/index');
+       Film.find()
+            .then(film =>{
+                res.render('default/index', {Film : film});
+            }).catch(err => {
+                console.log(err);
+            })
     },
     loginGet: (req,res) => {
         res.render('default/login');
@@ -95,5 +101,27 @@ module.exports = {
                 }
             });
         }
+    },
+    getSingle : (req,res) => {
+        const id = req.params.id;
+        Film.findById(id)
+            .populate('cinema')
+            .then(Film => {
+                res.render('default/single', {film : Film});
+                console.log(Film);
+            })
+    },
+    Getshowtime : (req,res) => {
+        const id = req.params.id ;
+        Film.findById(id)
+            .then(Film => {
+                Showtime.find()
+                    .populate('cinema')
+                    .populate('film')
+                    .then(Showtime => {
+                        res.render('default/showtime/index', {Film : Film, Showtime : Showtime});
+                    })
+            })
     }
+    
 }
