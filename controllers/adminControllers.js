@@ -1,4 +1,3 @@
-
 const Film = require('../models/FilmModel').Film;
 const Admin = require('../models/AdminModel').Admin;
 const Category = require('../models/CategoryModel').Category;
@@ -44,6 +43,7 @@ module.exports = {
             primiereDate : req.body.primiereDate,
             file :`/uploads/${fileName}`,
             time : req.body.time,
+            trailer : req.body.trailer,
             creationDate : Date.now()
         });
         newFilm.save()
@@ -157,37 +157,6 @@ module.exports = {
     getLogin : (req,res) => {
         res.render('admin/login');
     },
-    loginFilm : (req,res) => {
-        passport.use( new LocalStrategy({
-            usernameField : 'email',
-            passReqToCallback : true
-        },(req,email,password,done) => {
-            Admin.findOne({email : email}).then( admin => {
-                if( !admin ){
-                    return done(null,false,req.flash('error-message','Admin not found with this Email'));
-                }
-                bcrypt.compare(password, admin.password, (err, passwordMatched) => {
-                    if(err)
-                        return err;
-                    
-                    if(!passwordMatched) {
-                        return done(null,false,req.flash('error-message','Invalid username or Password'));
-                    }
-                    
-                    return done(null,admin, req.flash('success-message','Login SuccessFuly'));
-                })
-            })
-        }));
-        passport.serializeUser(function(user, done) {
-            done(null, user.id);
-          });
-          
-          passport.deserializeUser(function(id, done) {
-            User.findById(id, function(err, user) {
-              done(err, user);
-            });
-          });
-    },
     getRegister : (req,res) => {
         res.render('admin/register');
     },
@@ -237,7 +206,7 @@ module.exports = {
             });
         }
     },
-    getCineplex :async (req,res) => {
+    getCineplex : async (req,res) => {
         await Cineplex.find()
             .then(cineplex => {
                 res.render('admin/cineplex/index', {Cineplex : cineplex});
@@ -345,6 +314,16 @@ module.exports = {
                 req.flash('success-message','Created ShowTime Successfuly');
                 res.redirect('/admin/showtime');
             }).catch(err =>{
+                console.log(err);
+            })
+    },
+    deleteShowtime : (req,res) => {
+        const id = req.params.id;
+        Showtime.findByIdAndDelete(id)
+            .then(deleteShowtime => {
+                req.flash('success-message',`Deleted ${deleteShowtime.title} successfuly`);
+                res.redirect('/admin/showtime');
+            }).catch(err => {
                 console.log(err);
             })
     }

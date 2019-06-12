@@ -8,6 +8,7 @@ const ejs = require('ejs');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const session = require('express-session');
+const bodyParser =  require('body-parser');
 const fileUpload = require('express-fileupload');
 const passport = require('passport');
 const app = express();
@@ -19,6 +20,8 @@ app.use(express.urlencoded({extended : true}));
 
 app.use(express.static(path.join(__dirname,'public')));
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended : true}));
 
 /* Configure Mongoose to COnnect to MongoDB */
 const {mongoDB_URL,PORT} = require('./config/configuration');
@@ -35,10 +38,12 @@ app.set('view engine','ejs',{helpers : {select : selectOption}});
 app.use(methodOverride('newMethod'));
 /*-----Setup Flash and Session-------- */
 app.use(session({
-    secret : 'anysecret',
-    saveUninitialized:true,
+    secret : 'work hard',
+    saveUninitialized: false,
     resave : true,
 }));
+
+// Check login user
 
 app.use(flash());
 
@@ -51,6 +56,12 @@ app.use(passport.session());
 /*-------------------Routes------------------------*/
 const defaultRoutes = require('./routes/defaultRoute');
 const adminRoutes = require('./routes/adminRoute');
+
+app.get('*', (req,res,next) => {
+    res.locals.user = req.user || null;
+    
+    next();
+})
 
 app.use('/',defaultRoutes);
 app.use('/admin',adminRoutes);

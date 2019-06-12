@@ -1,0 +1,206 @@
+<%- include('../partials/default/header.ejs')%>
+
+<body>
+    <%- include('../partials/default/navigation.ejs')%>
+    <div class="banner-header">
+        <div class="container-fluid">
+            <div class="img-banner">
+                <img src="image/banner.jpg" alt="" style="width: 100%; background-size:cover;">
+            </div>
+        </div>
+    </div>
+    <div class="container trailer-top">
+        <div class="col-md-12 chude">
+                        <div class="snip1338">
+                            <h5>RinRin</h5>
+                            <h1><i class="fas fa-star"></i>TRAILER</h1>
+                            <h6>Est. 1958</h6>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="trailer">
+                   <%- film.trailer %>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 info-image">
+                        <img src="<%- film.file %>" alt="">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-film">
+                            <p class="name">Phim : <%- film.title %></p>
+                            <p class="min">Thời lượng : <%- film.time %> phút</p>
+                            <p class="min">Cinema : <%- film.cinema.title %></p>
+                            <p class="chatluong"><%- film.primiereDate %></p>
+                            <a class="btn btn-primary" href="/showtime/<%- film._id %>">Dat Ve</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container border-owl padding">
+        <div class="rinchans owl-carousel owl-theme owl-loaded">
+            <div class="owl-stage-outer">
+                <div class="owl-stage">
+                    <div class="owl-item">
+                        <div class="item">
+                            <a href="#"><img src="image/m10.jpg" alt="m10" /></a>
+                            <div class="owl-caption">
+                                <a href="#" class="title">Ten Phim</a>
+                                <p class="min">160 Phut</p>
+                                <p class="year">2016</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <div class="item">
+                            <a href="#"><img src="image/m11.jpg" alt="m10" /></a>
+                            <div class="owl-caption">
+                                <a href="#" class="title">Ten Phim</a>
+                                <p class="min">160 Phut</p>
+                                <p class="year">1992</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <div class="item">
+                            <a href="#"><img src="image/m12.jpg" alt="m10" /></a>
+                            <div class="owl-caption">
+                                <a href="#" class="title">Ten Phim</a>
+                                <p class="min">160 Phut</p>
+                                <p class="year">2015</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <div class="item">
+                            <a href="#"><img src="image/m13.jpg" alt="m10" /></a>
+                            <div class="owl-caption">
+                                <a href="#" class="title">Ten Phim</a>
+                                <p class="min">130 Phut</p>
+                                <p class="year">1992</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <div class="item">
+                            <a href="#"><img src="image/m14.jpg" alt="m10" /></a>
+                            <div class="owl-caption">
+                                <a href="#" class="title">Ten Phim</a>
+                                <p class="min">142 Phut</p>
+                                <p class="year">1996</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <div class="item">
+                            <a href="#"><img src="image/m15.jpg" alt="m10" /></a>
+                            <div class="owl-caption">
+                                <a href="#" class="title">Ten Phim</a>
+                                <p class="min">198 Phut</p>
+                                <p class="year">2005</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <div class="item">
+                            <a href="#"><img src="image/m16.jpg" alt="m10" /></a>
+                            <div class="owl-caption">
+                                <a href="#" class="title">Ten Phim</a>
+                                <p class="min">75 Phut</p>
+                                <p class="year">2009</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <div class="item">
+                            <a href="#"><img src="image/m17.jpg" alt="m10" /></a>
+                            <div class="owl-caption">
+                                <a href="#" class="title">Ten Phim</a>
+                                <p class="min">203 Phut</p>
+                                <p class="year">2003</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <div class="item">
+                            <a href="#"><img src="image/m18.jpg" alt="m10" /></a>
+                            <div class="owl-caption">
+                                <a href="#" class="title">Ten Phim</a>
+                                <p class="min">192 Phut</p>
+                                <p class="year">2007</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <div class="item">
+                            <a href="#"><img src="image/m19.jpg" alt="m10" /></a>
+                            <div class="owl-caption">
+                                <a href="#" class="title">Ten Phim</a>
+                                <p class="min">156 Phut</p>
+                                <p class="year">1999</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      <!--Content-TINTUC-->
+    <div class="container-fluid">
+        <div class="col-md-12 center">
+            <div class="snip1338">
+                <h5>RinRin</h5>
+                <h1><i class="fas fa-star"></i>Tin Tuc</h1>
+                <h6>Est. 1958</h6>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="row">
+            <div class="gird-news">
+                <div class="col-md-6 left1">
+                    <img src="image/banner1.jpg" alt="tintin6" />
+                </div>
+                <div class="col-md-6 right1">
+                    <div class="news-caption">
+                        <div class="title">ĐI TÌM 48 PHẦN CƠ THỂ</div>
+                        <div class="description"><p>Câu chuyện lấy bối cảnh vào giữa thời đại Muromachi,
+                             vào khoảng thập niên 70 của thế kỉ 15, sau trận chiến của
+                              Onin và Bunmei. Câu chuyện kể về Hyakkimaru - một chàng 
+                              trai trẻ khi mới sinh ra là đã bị mất 48 bộ phận trên cơ 
+                              thể. Điều bi thảm mà anh phải gánh chịu này là do cha của 
+                              anh - Kagemitsu Daigo - đã lập một lời hứa với bọn quỷ dữ,
+                               vì ông muốn thống trị đất nước này. Cái giá cho lời hứa đó
+                                chính là 48 bộ phân trên cơ thể của Hyakkimaru. Vì thế,
+                                 vừa mới sinh ra, Hyakkimaru đã bị khuyết tật đầy mình và 
+                                 bị gia đình ruồng bỏ, thả anh trôi sông.</p> </div>
+                        <div class="star"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="gird-news">
+                <div class="col-md-6 left2">
+                    <div class="news-caption">
+                        <div class="title"><p>CHUYỆN NGÀY XƯA Ở... HOLLYWOOD</p></div>
+                        <div class="description"><p>Chuyện Ngày Xưa ở... Hollywood lấy bối cảnh Los Angeles vào năm 1969 với hai nhân vật chính là Rick Dalton - cựu ngôi sao của một 
+                            bộ phim truyền hình viễn Tây - và người đóng thế lâu
+                             năm cho anh là Cliff Booth. Khi những thứ mới mẻ ập đ
+                             ến và thay thế những kẻ hết thời như Rick và Cliff, họ
+                              buộc phải đấu tranh để có thể tồn tại và xây dựng lại s
+                                óm xinh đẹp chính là nữ minh tinh Sharon Tate.</p></div>
+                        <div class="star"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 right2">
+                    <img src="image/banner2.jpg" alt="tintin6" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End TINTIC-->
+    <div class="clear"></div>
+    <%- include('../partials/default/footer.ejs')%>

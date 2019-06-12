@@ -125,8 +125,8 @@
                       <td><%- showtime.price %> Vnd</td>
                       <td>
                         <a href="/admin/showtime/create" class="btn btn-success btn-md">Create</a>
-                        <form action="/admin/showtime/delete/<%- showtime._id%>?newMethod=DELETE">
-                          <button type="submit" class="btn btn-warning btn-md">Delete</button>
+                        <form action="/admin/showtime/delete/<%- showtime._id%>?newMethod=DELETE" method="post">
+                          <button class="btn btn-warning btn-bg">Delete</button>
                         </form>
                       </td>
                     </tr>

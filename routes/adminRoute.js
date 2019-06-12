@@ -8,7 +8,6 @@ const bcrypt = require('bcryptjs');
 const {isAuthenticatedAdmin} = require('../config/customFunction');
 
 router.all('/*',(req,res,next) => {
-    
     req.app.locals.layout = 'admin';
     next();
 })
@@ -19,30 +18,36 @@ router.route('/')
     
     //getter login
 
-    passport.use( new LocalStrategy({
-        usernameField : 'email',
-        passReqToCallback : true
-    },(req,email,password,done) => {
-        Admin.findOne({email : email}).then( admin => {
-            if( !admin ){
-                return done(null,false,req.flash('error-message','Admin not found with this Email'));
-            }
-            bcrypt.compare(password, admin.password, (err, passwordMatched) => {
-                if(err)
-                    return err;
+    // passport.use( new LocalStrategy({
+    //     usernameField : 'email',
+    //     passReqToCallback : true
+    // },(req,email,password,done) => {
+    //     Admin.findOne({email : email}).then( admin => {
+    //         if( !admin ){
+    //             return done(null,false,req.flash('error-message','Admin not found with this Email'));
+    //         }
+    //         bcrypt.compare(password, admin.password, (err, passwordMatched) => {
+    //             if(err)
+    //                 return err;
                 
-                if(!passwordMatched) {
-                    return done(null,false,req.flash('error-message','Invalid username or Password'));
-                }
+    //             if(!passwordMatched) {
+    //                 return done(null,false,req.flash('error-message','Invalid username or Password'));
+    //             }
                 
-                return done(null,admin, req.flash('success-message','Login SuccessFuly'));
-            })
-        })
-    }));
-    passport.serializeUser(function(user, done) {
-        done(null, user.id);
-      });
+    //             return done(null,admin, req.flash('success-message','Login SuccessFuly'));
+    //         })
+    //     })
+    // }));
+    // passport.serializeUser(function(user, done) {
+    //     done(null, user.id);
+    //   });
       
+    // passport.deserializeUser(function(id, done) {
+    //     User.findById(id, function(err, user) {
+    //       done(err, user);
+    //     });
+    // });
+
     passport.deserializeUser(function(id, done) {
         User.findById(id, function(err, user) {
           done(err, user);
@@ -80,15 +85,24 @@ router.route('/category/edit/:id')
     .post(adminController.editCategoryFilmRoute);
 
 /*----------ADMIN LOGIN AND RESGISTER------------*/
-router.route('/login')
-    .get(adminController.getLogin)
-    .post(passport.authenticate('local',{
-        successRedirect : '/admin',
-        failureRedirect : '/admin/login',
-        failureFlash : true,
-        successFlash: true,
-        session : true  
-    }),adminController.loginFilm);
+// router.route('/login')
+//     .get(adminController.getLogin)
+//     .post(passport.authenticate('local',{
+//         successRedirect : '/admin',
+//         failureRedirect : '/admin/login',
+//         failureFlash : true,
+//         successFlash: true,
+//         session : true  
+//     }),adminController.loginFilm);
+// router.route('/login')
+//     .get(adminController.getLogin)
+//     .post(passport.authenticate('local',{
+//         successRedirect : '/admin',
+//         failureRedirect : '/admin/login',
+//         failureFlash : true,
+//         successFlash: true,
+//         session : true  
+//     }),adminController.loginFilm);
 
 router.route('/register')
     .get(adminController.getRegister)
@@ -130,5 +144,8 @@ router.route('/showtime/create')
     .post(adminController.submitShowtime);
 
 
+
+router.route('/showtime/delete/:id')
+    .delete(adminController.deleteShowtime);
 
 module.exports = router;

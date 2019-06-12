@@ -1,4 +1,5 @@
-const Post = require('../models/FilmModel.js').Post;
+const Film = require('../models/FilmModel.js').Film;
+const Showtime = require('../models/ShowtimeModel').Showtime;
 const User  = require('../models/UserModel.js').User;
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -6,7 +7,12 @@ const bcrypt = require('bcryptjs');
 
 module.exports = {
     index: (req, res) => {
-        res.render('default/index');
+       Film.find()
+            .then(film =>{
+                res.render('default/index', {Film : film});
+            }).catch(err => {
+                console.log(err);
+            })
     },
     loginGet: (req,res) => {
         res.render('default/login');
@@ -20,7 +26,8 @@ module.exports = {
                 if (!user) {
                     return done(null,false,req.flash('error-message','User not found with this email'));
                 }
-    
+                
+                req.session.userId = user._id;
                 bcrypt.compare(password, user.password, ( err, passwordMatched) => {
                     if (err) {
                         return err;
@@ -29,7 +36,6 @@ module.exports = {
                     if(!passwordMatched) {
                         return done(null,false, req.flash('error-message','Invalid username or Password'));
                     }
-    
                     return done(null, user, req.flash('success-message','Login Successful'));
                 })
             })
@@ -43,6 +49,11 @@ module.exports = {
               done(err, user);
             });
           });
+    },
+    LogOutPost : (req,res) => {
+        req.logout();
+        req.flash('success-message',`LogOut successfuly`);
+        res.redirect('/login');
     },
     registerGet : (req,res) => {
         res.render('default/register');
@@ -95,5 +106,60 @@ module.exports = {
                 }
             });
         }
+    },
+    getSingle : (req,res) => {
+        const id = req.params.id;
+        Film.findById(id)
+            .populate('cinema')
+            .then(Film => {
+                res.render('default/single', {film : Film});
+                console.log(Film);
+            })
+    },
+    Getshowtime : (req,res) => {
+        const id = req.params.id ;
+        Film.findById(id)
+            .then(Film => {
+                Showtime.find()
+                    .populate('cinema')
+                    .populate('film')
+                    .then(Showtime => {
+                        res.render('default/showtime/index', {Film : Film, Showtime : Showtime});
+                    })
+            })
+    },
+    infomation : (req,res) => {
+        const id = req.params.id ;
+        User.findById(id)
+            .then(user => {
+                res.render('default/infomation', {User : user});
+            })
+        
+    },
+    PostInfomation : (req,res,next)=> {
+        const id = req.params.id;
+        User.findById(id)
+            .then(User => {
+                const passwordOld = req.body.password;
+                const newPassword = req.body.passwordNew;
+                const config = req.body.passwordConfig;
+                if (User.password == passwordOld) {
+                    next();
+                } else {
+                    req.flash('error-message','Old Password false');
+                }
+                if (newPassword == config) {
+                    next();
+                } else {
+                    req.flash('error-message', 'NewPassword or ConfigPassword false');
+                }
+                User.password = newPassword;
+                User.save()
+                    .then(updateUser =>{
+                        req.flash('success-message','Update Password Successfuly');
+                        res.redirect('/login');
+                    })
+            })
     }
+    
 }

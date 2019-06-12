@@ -1,13 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/UserModel').User;
-const defaultControllers = require('../controllers/defaultControllers');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
-
+const defaultControllers = require('../controllers/defaultControllers');
 router.all('/*',(req,res,next) => {
-    
     req.app.locals.layout = 'default';
     next();
 })
@@ -58,11 +56,29 @@ router.route('/login')
         successFlash: true,
         session : true
     }),defaultControllers.loginPost);
+/*--LOGOUT---*/
+
+router.route('/logout')
+    .get(defaultControllers.LogOutPost);
 
 /*--Register---*/
 router.route('/register')
     .get(defaultControllers.registerGet)
     .post(defaultControllers.registerPost);
 
+/*------------Single Page Film--------------*/
+
+router.route('/single/:id')
+    .get(defaultControllers.getSingle);
     
+
+/*------------SHOW TIME : SUAT CHIEU--------------*/
+
+router.route('/showtime/:id')
+    .get(defaultControllers.Getshowtime);
+
+/*------------Infomation : Thong tin-------------*/
+router.route('/infomation/:id')
+    .get(defaultControllers.infomation)
+    .post(defaultControllers.PostInfomation);
 module.exports = router;

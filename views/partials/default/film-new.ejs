@@ -7,72 +7,20 @@
                         <h6>Est. 1958</h6>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-2 move-gird">
-                    <a href="#"><img src="image/m15.jpg" alt="m2"></a>
-                    <div class="film-caption">
-                        <a href="#" class="title">God’s Compass</a>
-                        <p class="min">Phut</p>
-                        <p class="year">Year</p>
+                <% Film.forEach( (film) => { %>
+                    <div class="col-sm-4 col-md-2 move-gird">
+                        <a href="single/<%- film._id %>"><img src="<%- film.file %>" alt="<%- film.file %>"></a>
+                        <div class="film-caption">
+                            <a href="single/<%- film._id %>" class="title"><%- film.title %></a>
+                            <p class="min">Thời lượng : <%- film.time %> Phút</p>
+                            <p class="year">Year</p>
+                        </div>
+                        <div class="new">
+                            NEW
+                        </div>
                     </div>
-                    <div class="new">
-                        NEW
-                    </div>
-                </div>
-                <div class="col-sm-4 col-md-2 move-gird">
-                    <a href="#"><img src="image/m2.jpg" alt="m2"></a>
-                    <div class="film-caption">
-                        <a href="#" class="title">Bad Moms</a>
-                        <p class="min">Phut</p>
-                        <p class="year">Year</p>
-                    </div>
-                    <div class="new">
-                        NEW
-                    </div>
-                </div>
-                <div class="col-sm-4 col-md-2 move-gird">
-                    <a href="#"><img src="image/m5.jpg" alt="m2"></a>
-                    <div class="film-caption">
-                        <a href="#" class="title">Jason Bourne</a>
-                        <p class="min">Phut</p>
-                        <p class="year">Year</p>
-                    </div>
-                    <div class="new">
-                        NEW
-                    </div>
-                </div>
-                <div class="col-sm-4 col-md-2 move-gird">
-                    <a href="#"><img src="image/m16.jpg" alt="m2"></a>
-                    <div class="film-caption">
-                        <a href="#" class="title">Rezort</a>
-                        <p class="min">Phut</p>
-                        <p class="year">Year</p>
-                    </div>
-                    <div class="new">
-                        NEW
-                    </div>
-                </div>
-                <div class="col-sm-4 col-md-2 move-gird">
-                    <a href="#"><img src="image/m17.jpg" alt="m2"></a>
-                    <div class="film-caption">
-                        <a href="#" class="title">Peter</a>
-                        <p class="min">Phut</p>
-                        <p class="year">Year</p>
-                    </div>
-                    <div class="new">
-                        NEW
-                    </div>
-                </div>
-                <div class="col-sm-4 col-md-2 move-gird">
-                    <a href="#"><img src="image/m18.jpg" alt="m2"></a>
-                    <div class="film-caption">
-                        <a href="#" class="title">ISRA 88</a>
-                        <p class="min">Phut</p>
-                        <p class="year">Year</p>
-                    </div>
-                    <div class="new">
-                        NEW
-                    </div>
-                </div>
+                <% }) %>
+                
             </div>
             <div class="row text-center">
                 <div class="col-md-12 chude">
@@ -82,71 +30,18 @@
                         <h6>Est. 1958</h6>
                     </div>
                 </div>
-                <div class="col-md-2 move-gird">
-                    <a href="#"><img src="image/m1.jpg" alt="m2"></a>
-                    <div class="film-caption">
-                        <a href="#" class="title">War Dogs</a>
-                        <p class="min">Phut</p>
-                        <p class="year">Year</p>
+                <% Film.forEach( (film) => { %>
+                    <div class="col-sm-4 col-md-2 move-gird">
+                        <a href="single/<%- film._id %>"><img src="<%- film.file %>" alt="<%- film.file %>"></a>
+                        <div class="film-caption">
+                            <a href="single/<%- film._id %>" class="title"><%- film.title %></a>
+                            <p class="min">Thời lượng : <%- film.time %> Phút</p>
+                            <p class="year">Year</p>
+                        </div>
+                        <div class="new">
+                            NEW
+                        </div>
                     </div>
-                    <div class="new">
-                        NEW
-                    </div>
-                </div>
-                <div class="col-md-2 move-gird">
-                    <a href="#"><img src="image/m14.jpg" alt="m2"></a>
-                    <div class="film-caption">
-                        <a href="#" class="title">The Other Side</a>
-                        <p class="min">Phut</p>
-                        <p class="year">Year</p>
-                    </div>
-                    <div class="new">
-                        NEW
-                    </div>
-                </div>
-                <div class="col-md-2 move-gird">
-                    <a href="#"><img src="image/m19.jpg" alt="m2"></a>
-                    <div class="film-caption">
-                        <a href="#" class="title">Civil War</a>
-                        <p class="min">Phut</p>
-                        <p class="year">Year</p>
-                    </div>
-                    <div class="new">
-                        NEW
-                    </div>
-                </div>
-                <div class="col-md-2 move-gird">
-                    <a href="#"><img src="image/m20.jpg" alt="m2"></a>
-                    <div class="film-caption">
-                        <a href="#" class="title">The Secret Life of Pets</a>
-                        <p class="min">Phut</p>
-                        <p class="year">Year</p>
-                    </div>
-                    <div class="new">
-                        NEW
-                    </div>
-                </div>
-                <div class="col-md-2 move-gird">
-                    <a href="#"><img src="image/m21.jpg" alt="m2"></a>
-                    <div class="film-caption">
-                        <a href="#" class="title">The Jungle Book</a>
-                        <p class="min">Phut</p>
-                        <p class="year">Year</p>
-                    </div>
-                    <div class="new">
-                        NEW
-                    </div>
-                </div>
-                <div class="col-md-2 move-gird">
-                    <a href="#"><img src="image/m22.jpg" alt="m2"></a>
-                    <div class="film-caption">
-                        <a href="#" class="title">Assassin's Creed 3</a>
-                        <p class="min">Phut</p>
-                        <p class="year">Year</p>
-                    </div>
-                    <div class="new">
-                        NEW
-                    </div>
-                </div>
+                <% }) %>
             </div>
         </div>
