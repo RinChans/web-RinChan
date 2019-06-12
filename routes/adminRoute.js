@@ -41,13 +41,11 @@ router.route('/')
     // passport.serializeUser(function(user, done) {
     //     done(null, user.id);
     //   });
-      
     // passport.deserializeUser(function(id, done) {
     //     User.findById(id, function(err, user) {
     //       done(err, user);
     //     });
     // });
-
     passport.deserializeUser(function(id, done) {
         User.findById(id, function(err, user) {
           done(err, user);
@@ -103,6 +101,15 @@ router.route('/category/edit/:id')
 //         successFlash: true,
 //         session : true  
 //     }),adminController.loginFilm);
+router.route('/login')
+    .get(adminController.getLogin)
+    .post(passport.authenticate('local',{
+        successRedirect : '/admin',
+        failureRedirect : '/admin/login',
+        failureFlash : true,
+        successFlash: true,
+        session : true  
+    }),adminController.loginFilm);
 
 router.route('/register')
     .get(adminController.getRegister)
@@ -143,7 +150,8 @@ router.route('/showtime/create')
     .get(adminController.createShowtime)
     .post(adminController.submitShowtime);
 
-
+router.route('/showtime/delete/:id')
+    .delete(adminController.deleteShowtime);
 
 router.route('/showtime/delete/:id')
     .delete(adminController.deleteShowtime);

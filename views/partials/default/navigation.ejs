@@ -22,6 +22,7 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">Connect</a>
                 </li>
+<<<<<<< HEAD
                 <% if (user) { %>
                     <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,6 +31,16 @@
                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                           <a class="dropdown-item" href="/logout">Log Out</a>
                           <a class="dropdown-item" href="/infomation/<%- user._id%>">Infomation</a>
+=======
+                <% if (currentUser) { %>
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <%- currentUser.fullname %>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                          <a class="dropdown-item" href="#">Log Out</a>
+                          <a class="dropdown-item" href="#">Infomation</a>
+>>>>>>> 9440fef91001a4d3109558f6abc08744699947cc
                         </div>
                       </div>
                 <% } else { %>

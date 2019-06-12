@@ -20,6 +20,7 @@
                     <div class="clear"></div>
         <div class="row">
            <div class="col-md-6">
+<<<<<<< HEAD
                     <% Showtime.forEach( (showtime) => {%>
                         <div class="showtime">
                             <div class="site sitecgv">
@@ -40,6 +41,28 @@
                         </div>
                         <hr style="border : 1.5px solid #000">
                     <% })%>
+=======
+                <% Showtime.forEach( (showtime) => {%>
+                    <div class="showtime">
+                        <div class="site sitecgv">
+                            <div class="site">
+                                <h3><%- showtime.cinema.title %></h3>
+                            </div>
+                            <div class="cinema">
+                                <h4>Rap <%- showtime.cinema.typeCinema %></h4>
+                            </div>
+                            <ul class="product-grid">
+                                <li class="item">
+                                    <span><%- showtime.begin %></span>
+                                    <br>
+                                    <span>84 Ghe trong</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr style="border : 1.5px solid #000">
+                <% })%>
+>>>>>>> 9440fef91001a4d3109558f6abc08744699947cc
            </div>
            <div class="col-md-6">
                <div class="chair">

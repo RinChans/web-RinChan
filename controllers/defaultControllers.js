@@ -1,5 +1,9 @@
+
 const Film = require('../models/FilmModel.js').Film;
 const Showtime = require('../models/ShowtimeModel').Showtime;
+const Film = require('../models/FilmModel.js').Film;
+const Showtime = require('../models/ShowtimeModel').Showtime;
+const Post = require('../models/FilmModel.js').Post;
 const User  = require('../models/UserModel.js').User;
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -127,6 +131,7 @@ module.exports = {
                         res.render('default/showtime/index', {Film : Film, Showtime : Showtime});
                     })
             })
+<<<<<<< HEAD
     },
     infomation : (req,res) => {
         const id = req.params.id ;

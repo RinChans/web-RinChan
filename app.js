@@ -44,6 +44,8 @@ app.use(session({
 }));
 
 // Check login user
+const auth = require('./config/auth');
+app.use(auth);
 
 app.use(flash());
 
@@ -57,6 +59,7 @@ app.use(passport.session());
 const defaultRoutes = require('./routes/defaultRoute');
 const adminRoutes = require('./routes/adminRoute');
 
+<<<<<<< HEAD
 app.get('*', (req,res,next) => {
     res.locals.user = req.user || null;
     

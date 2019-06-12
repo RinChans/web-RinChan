@@ -81,4 +81,7 @@ router.route('/showtime/:id')
 router.route('/infomation/:id')
     .get(defaultControllers.infomation)
     .post(defaultControllers.PostInfomation);
+=======
+
+
 module.exports = router;

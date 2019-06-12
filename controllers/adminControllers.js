@@ -44,6 +44,7 @@ module.exports = {
             file :`/uploads/${fileName}`,
             time : req.body.time,
             trailer : req.body.trailer,
+            trailer : req.body.trailer,
             creationDate : Date.now()
         });
         newFilm.save()
@@ -157,6 +158,49 @@ module.exports = {
     getLogin : (req,res) => {
         res.render('admin/login');
     },
+    // loginFilm : (req,res) => {
+    //     passport.use( new LocalStrategy({
+    //         usernameField : 'email',
+    //         passReqToCallback : true
+    //     },(req,email,password,done) => {
+    //         Admin.findOne({email : email}).then( admin => {
+    //             if( !admin ){
+    //                 return done(null,false,req.flash('error-message','Admin not found with this Email'));
+    //             }
+    //             bcrypt.compare(password, admin.password, (err, passwordMatched) => {
+    //                 if(err)
+    //                     return err;
+    loginFilm : (req,res) => {
+        passport.use( new LocalStrategy({
+            usernameField : 'email',
+            passReqToCallback : true
+        },(req,email,password,done) => {
+            Admin.findOne({email : email}).then( admin => {
+                if( !admin ){
+                    return done(null,false,req.flash('error-message','Admin not found with this Email'));
+                }
+                bcrypt.compare(password, admin.password, (err, passwordMatched) => {
+                    if(err)
+                        return err;
+                    
+    //                 if(!passwordMatched) {
+    //                     return done(null,false,req.flash('error-message','Invalid username or Password'));
+    //                 }
+                    
+    //                 return done(null,admin, req.flash('success-message','Login SuccessFuly'));
+    //             })
+    //         })
+    //     }));
+    //     passport.serializeUser(function(user, done) {
+    //         done(null, user.id);
+    //       });
+          
+    //       passport.deserializeUser(function(id, done) {
+    //         User.findById(id, function(err, user) {
+    //           done(err, user);
+    //         });
+    //       });
+    // },
     getRegister : (req,res) => {
         res.render('admin/register');
     },
